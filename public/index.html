@@ -12,8 +12,8 @@
 <body>
   <div id="app">
     <form v-on:submit.prevent="saveNewItem">
-      <label for="new-item">Add to to-do list:</label>
-      <input type="text" id="new-item" v-model="newItem" name="to-do" required>
+      <!-- <label for="new-item">New to-do:</label> -->
+      <input type="text" id="new-item" v-model="newItem" name="to-do" placeholder="New to-do" required>
       <br>
       <input type="radio" id="one" value=true v-model="priority" name="to-do" required>
       <label for="High Priority">High Priority</label>
@@ -26,7 +26,7 @@
 
 
 <ul>
-  <li v-for="(item, index) in items">
+  <li v-for="(item, index) in items" v-bind:class="item.highPriority ? 'high-priority' : 'low-priority'">
   <span>{{item.name}}</span>
   <span v-if="item.highPriority">HIGH PRIORITY</span>
   </li>
